@@ -1,143 +1,90 @@
-# Yatube
+<p align="center">
+  <img src=".github/assets/banner.svg" width="100%" alt="Yatube · Финальный этап" />
+</p>
 
-🇷🇺 [Русский](#русский) | 🇬🇧 [English](#english)
+# Yatube · Финальный этап
 
----
+Публикации, комментарии и лента любимых авторов.
 
-## Русский
+**Учебный проект** · Python · Django 2.2.16 · SQLite · Pillow · sorl-thumbnail · pytest  
+[Русский](#about) · [English](#english) · [Профиль](https://github.com/artemleonich)
 
-Социальная сеть для публикации личных дневников. Финальный проект спринта — Яндекс Практикум.
+<a id="about"></a>
 
-### Возможности
+## О проекте
 
-- Регистрация и аутентификация пользователей
-- Создание, редактирование и удаление постов
-- Прикрепление изображений к постам
-- Комментирование записей
-- Подписка на авторов
-- Лента подписок
-- Группировка постов по сообществам
-- Пагинация
-- Кеширование главной страницы
-- Кастомные страницы ошибок (404, 403, 500)
+Финальный учебный этап Yatube из курса бэкенд-разработки на Python [Яндекс Практикума](https://practicum.yandex.ru/). Проект объединяет публикации, сообщества и взаимодействие с авторами.
 
-### Стек
+- Регистрация, вход и профили авторов.
+- Создание текстовых постов и редактирование собственных публикаций.
+- Тематические группы и пагинация лент.
+- Изображения в публикациях, комментарии и страницы отдельных записей.
+- Подписка и отписка от авторов, отдельная лента подписок.
+- Кеширование блока главной ленты на 20 секунд.
+- Страницы ошибок и админ-панель Django.
 
-Python 3.7, Django 2.2, SQLite3, HTML, CSS, Bootstrap, Pillow, Sorl-Thumbnail, Pytest
+Другие этапы: [сообщества](https://github.com/artemleonich/hw02_community) · [формы](https://github.com/artemleonich/hw03_forms) · [тесты](https://github.com/artemleonich/hw04_tests). Отдельная версия проекта — [yatube_project](https://github.com/artemleonich/yatube_project).
 
-### Запуск
-
-```bash
-git clone https://github.com/artemleonich/hw05_final.git
-cd hw05_final
-
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-# venv\Scripts\activate  # Windows
-
-pip install -r requirements.txt
-
-cd yatube
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
-```
-
-Приложение будет доступно по адресу http://127.0.0.1:8000/
-
-### Тесты
-
-```bash
-pytest
-```
-
-### Структура проекта
-
-```
-hw05_final/
-├── yatube/
-│   ├── about/          # приложение «О проекте»
-│   ├── core/           # общие шаблоны и контекст-процессоры
-│   ├── posts/          # основное приложение (посты, комментарии, подписки)
-│   ├── templates/      # HTML-шаблоны
-│   ├── users/          # регистрация и авторизация
-│   ├── yatube/         # настройки проекта
-│   └── manage.py
-├── tests/              # тесты
-├── requirements.txt
-└── README.md
-```
-
-### Автор
-
-Артём Леонов
-
----
-
-## English
-
-A social network for publishing personal blogs. Final project of the sprint — Yandex Practicum.
-
-### Features
-
-- User registration and authentication
-- Create, edit, and delete posts
-- Attach images to posts
-- Comment on posts
-- Follow/unfollow authors
-- Subscription feed
-- Group posts by communities
-- Pagination
-- Main page caching
-- Custom error pages (404, 403, 500)
-
-### Tech Stack
-
-Python 3.7, Django 2.2, SQLite3, HTML, CSS, Bootstrap, Pillow, Sorl-Thumbnail, Pytest
-
-### Getting Started
+## Запуск
 
 ```bash
 git clone https://github.com/artemleonich/hw05_final.git
 cd hw05_final
-
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-# venv\Scripts\activate  # Windows
-
-pip install -r requirements.txt
-
-cd yatube
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python yatube/manage.py migrate
+python yatube/manage.py createsuperuser
+python yatube/manage.py runserver
 ```
 
-The app will be available at http://127.0.0.1:8000/
+В Windows PowerShell: `.venv\Scripts\Activate.ps1`.
 
-### Tests
+Приложение доступно по адресу [127.0.0.1:8000](http://127.0.0.1:8000/). Суперпользователь нужен для [админ-панели](http://127.0.0.1:8000/admin/), где можно создать тематические группы.
+
+## Проверка
+
+Собственные тесты Django:
 
 ```bash
-pytest
+python yatube/manage.py test posts about core
 ```
 
-### Project Structure
+Учебные проверки из корня репозитория:
 
-```
-hw05_final/
-├── yatube/
-│   ├── about/          # "About" app
-│   ├── core/           # shared templates and context processors
-│   ├── posts/          # main app (posts, comments, follows)
-│   ├── templates/      # HTML templates
-│   ├── users/          # registration and auth
-│   ├── yatube/         # project settings
-│   └── manage.py
-├── tests/              # tests
-├── requirements.txt
-└── README.md
+```bash
+python -m pytest
 ```
 
-### Author
+## Навигация по коду
 
-Artem Leonov
+| Путь | Назначение |
+| --- | --- |
+| [yatube/posts/](yatube/posts/) | Посты, комментарии, подписки и формы |
+| [yatube/users/](yatube/users/) | Регистрация и авторизация |
+| [yatube/core/](yatube/core/) | Страницы ошибок и общие функции |
+| [yatube/templates/](yatube/templates/) | HTML-шаблоны |
+| [yatube/posts/tests/](yatube/posts/tests/) | Тесты приложения |
+| [yatube/yatube/settings.py](yatube/yatube/settings.py) | SQLite, медиафайлы и кеш |
+
+## Статус
+
+Сохранён учебный стек Django 2.2. Запуск на новых версиях Python может потребовать адаптации окружения. В текущей реализации картинку можно загрузить при редактировании поста; форма создания не обрабатывает файлы.
+
+<a id="english"></a>
+
+<details>
+<summary>English overview</summary>
+
+The final Yatube learning stage from Yandex Practicum. It combines text posts, groups, images, comments, author follows and a following feed. Django tests and a separate course test suite are included.
+
+Create a virtual environment, install the dependencies, run `python yatube/manage.py migrate`, optionally create an admin account, then start `python yatube/manage.py runserver`. Run `python yatube/manage.py test posts about core` for Django tests and `python -m pytest` for course checks.
+
+The code retains the original Django 2.2 learning stack. Image uploads are handled when editing a post; the creation view does not process uploaded files. The main feed fragment is cached for twenty seconds.
+
+</details>
+
+---
+
+Автор: [Артём Леонов](https://github.com/artemleonich).
+
